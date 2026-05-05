@@ -21,10 +21,8 @@ metrics:
     label: Páginas con Arquitectura SEO
   - value: ~1,936
     label: Visitas Potenciales/Mes a la web
-situation: "La Clínica Big Smile, liderada por la Dra. Claudia Girón
-  (odontopediatra con 25 años de experiencia, formación internacional en México
-  y Texas, reconocida por Colgate Palmolive como líder de opinión), tenía un
-  problema típico: su sitio web no reflejaba quién era. El copy hablaba de
+situation: "La Clínica Big Smile, tenía un problema típico: su sitio web no
+  reflejaba la personalidad de la marca o de la compañía. El copy hablaba de
   'consultorios' y 'pacientes' sin diferenciarse de ningún dentista general. Y
   prácticamente ningún odontopediatra en El Salvador ejecuta marketing digital,
   dejando 12,910 búsquedas mensuales sin capturar."
