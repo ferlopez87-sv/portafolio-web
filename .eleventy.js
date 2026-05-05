@@ -3,12 +3,29 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
 
   // Casos de estudio collection sorted by order
   eleventyConfig.addCollection("casos", function(collectionApi) {
     return collectionApi
       .getFilteredByGlob("src/casos/*.md")
       .sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+  });
+
+  // Secure JSON serialization: escapes < and > so </script> cannot break out of
+  // a <script> tag context even though the HTML parser is not JSON-aware.
+  eleventyConfig.addFilter("tojson", function(value) {
+    return JSON.stringify(value)
+      .replace(/</g, "\\u003c")
+      .replace(/>/g, "\\u003e");
+  });
+
+  // URL allowlist: only permit http/https/mailto and relative URLs (/ or #).
+  // Rejects javascript:, data:, and any other protocol.
+  eleventyConfig.addFilter("urlsafe", function(value) {
+    const str = String(value ?? "");
+    if (/^(https?:|mailto:|\/|#)/i.test(str)) return str;
+    return "#";
   });
 
   return {

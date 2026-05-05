@@ -93,7 +93,7 @@ tailwind.config = {
   <p class="text-sm font-semibold tracking-tight">Fernando Lopez — Marketing Portfolio</p>
   <div class="flex gap-6">
     {% for link in homepage.header_nav %}
-    <a class="text-xs font-medium uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ link.url }}">{{ link.label }}</a>
+    <a class="text-xs font-medium uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ link.url | urlsafe }}">{{ link.label }}</a>
     {% endfor %}
   </div>
 </div>
@@ -112,7 +112,7 @@ tailwind.config = {
       <p class="text-secondary text-lg max-w-lg">{{ homepage.hero.description }}</p>
       <div class="flex gap-4 flex-wrap">
         {% for btn in homepage.hero.buttons %}
-        <a href="{{ btn.url }}" class="{% if btn.primary %}bg-primary text-on-primary{% else %}bg-surface-container text-on-surface{% endif %} px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:opacity-80 transition-opacity">
+        <a href="{{ btn.url | urlsafe }}" class="{% if btn.primary %}bg-primary text-on-primary{% else %}bg-surface-container text-on-surface{% endif %} px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:opacity-80 transition-opacity">
           {{ btn.label }}
         </a>
         {% endfor %}
@@ -246,7 +246,7 @@ tailwind.config = {
     <h2 class="text-5xl md:text-6xl font-bold mb-12 tracking-tight">{{ homepage.contact.title }}</h2>
     <div class="flex flex-col md:flex-row justify-center gap-8 items-center">
       <a class="text-2xl font-medium border-b-2 border-primary pb-1 hover:opacity-60 transition-opacity" href="mailto:{{ homepage.contact.email }}">{{ homepage.contact.email }}</a>
-      <a class="text-sm font-bold uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ homepage.contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="text-sm font-bold uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ homepage.contact.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </section>
 
@@ -256,7 +256,7 @@ tailwind.config = {
 <nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
   <div class="bg-black/90 backdrop-blur-xl px-6 py-3 rounded-full flex items-center gap-8 shadow-2xl border border-white/10">
     {% for link in homepage.floating_nav %}
-    <a class="text-white hover:text-gray-300 transition-colors" href="{{ link.url }}" aria-label="{{ link.label }}">
+    <a class="text-white hover:text-gray-300 transition-colors" href="{{ link.url | urlsafe }}" aria-label="{{ link.label }}">
       <span class="material-symbols-outlined text-[20px]">{{ link.icon }}</span>
     </a>
     {% endfor %}
@@ -281,18 +281,18 @@ tailwind.config = {
 [
   {% for caso in collections.casos %}
   {
-    "title": {{ caso.data.title | dump | safe }},
-    "company": {{ caso.data.company | dump | safe }},
-    "period": {{ caso.data.period | dump | safe }},
-    "eyebrow": {{ caso.data.eyebrow | dump | safe }},
-    "tags": {{ caso.data.tags | dump | safe }},
-    "summary": {{ caso.data.summary | dump | safe }},
-    "metrics": {{ caso.data.metrics | dump | safe }},
-    "situation": {{ caso.data.situation | dump | safe }},
-    "task": {{ caso.data.task | dump | safe }},
-    "action": {{ caso.data.action | dump | safe }},
-    "result": {{ caso.data.result | dump | safe }},
-    "learning": {{ caso.data.learning | dump | safe }}
+    "title": {{ caso.data.title | tojson | safe }},
+    "company": {{ caso.data.company | tojson | safe }},
+    "period": {{ caso.data.period | tojson | safe }},
+    "eyebrow": {{ caso.data.eyebrow | tojson | safe }},
+    "tags": {{ caso.data.tags | tojson | safe }},
+    "summary": {{ caso.data.summary | tojson | safe }},
+    "metrics": {{ caso.data.metrics | tojson | safe }},
+    "situation": {{ caso.data.situation | tojson | safe }},
+    "task": {{ caso.data.task | tojson | safe }},
+    "action": {{ caso.data.action | tojson | safe }},
+    "result": {{ caso.data.result | tojson | safe }},
+    "learning": {{ caso.data.learning | tojson | safe }}
   }{% if not loop.last %},{% endif %}
   {% endfor %}
 ]
@@ -316,30 +316,48 @@ tailwind.config = {
   const content = document.getElementById('lb-content');
   const closeBtn = document.getElementById('lb-close');
 
+  function esc(str) {
+    return String(str ?? '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function sanitizeContent(str) {
+    if (!str) return '';
+    let s = esc(str);
+    s = s.replace(/&lt;\/?br\s*\/?&gt;/gi, '<br>');
+    s = s.replace(/&lt;b&gt;([\s\S]*?)&lt;\/b&gt;/gi, '<b>$1</b>');
+    s = s.replace(/&lt;strong&gt;([\s\S]*?)&lt;\/strong&gt;/gi, '<strong>$1</strong>');
+    return s;
+  }
+
   function openLightbox(idx) {
     const c = CASES[idx];
     const col = PALETTE[idx % 8];
     const metricsHTML = (c.metrics||[]).map(m =>
-      `<div class="lb-metric-pill"><span class="lb-metric-val">${m.value}</span><span class="lb-metric-lbl">${m.label}</span></div>`
+      `<div class="lb-metric-pill"><span class="lb-metric-val">${esc(m.value)}</span><span class="lb-metric-lbl">${esc(m.label)}</span></div>`
     ).join('');
     const tagsHTML = (c.tags||[]).map(t =>
-      `<span style="font-size:.7rem;font-weight:600;padding:.25rem .6rem;border-radius:9999px;background:${col.bg};color:${col.text};">${t}</span>`
+      `<span style="font-size:.7rem;font-weight:600;padding:.25rem .6rem;border-radius:9999px;background:${col.bg};color:${col.text};">${esc(t)}</span>`
     ).join('');
 
     content.innerHTML = `
       <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;flex-wrap:wrap;">
-        <span style="font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:${col.bg};color:${col.text};padding:.25rem .7rem;border-radius:9999px;">${c.eyebrow}</span>
+        <span style="font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:${col.bg};color:${col.text};padding:.25rem .7rem;border-radius:9999px;">${esc(c.eyebrow)}</span>
       </div>
-      <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#888;margin-bottom:.4rem;">${c.company} · ${c.period}</p>
-      <h2 id="lb-title" style="font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:1rem;">${c.title}</h2>
+      <p style="font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#888;margin-bottom:.4rem;">${esc(c.company)} · ${esc(c.period)}</p>
+      <h2 id="lb-title" style="font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:1rem;">${esc(c.title)}</h2>
       <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem;">${tagsHTML}</div>
       ${metricsHTML ? `<div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.5rem;">${metricsHTML}</div>` : ''}
       <hr style="border:none;border-top:1px solid #eee;margin:1.25rem 0;">
-      <div class="lb-star-section"><p class="lb-star-label">S — Situación</p><p class="lb-star-text">${c.situation||''}</p></div>
-      <div class="lb-star-section"><p class="lb-star-label">T — Tarea</p><p class="lb-star-text">${c.task||''}</p></div>
-      <div class="lb-star-section"><p class="lb-star-label">A — Acción</p><p class="lb-star-text">${c.action||''}</p></div>
-      <div class="lb-star-section"><p class="lb-star-label">R — Resultado</p><p class="lb-star-text">${c.result||''}</p></div>
-      ${c.learning ? `<div class="lb-star-section" style="background:#f9f9f9;border-radius:.75rem;padding:1rem 1.25rem;"><p class="lb-star-label">+ Aprendizaje Clave</p><p class="lb-star-text">${c.learning}</p></div>` : ''}
+      <div class="lb-star-section"><p class="lb-star-label">S — Situación</p><p class="lb-star-text">${sanitizeContent(c.situation)}</p></div>
+      <div class="lb-star-section"><p class="lb-star-label">T — Tarea</p><p class="lb-star-text">${sanitizeContent(c.task)}</p></div>
+      <div class="lb-star-section"><p class="lb-star-label">A — Acción</p><p class="lb-star-text">${sanitizeContent(c.action)}</p></div>
+      <div class="lb-star-section"><p class="lb-star-label">R — Resultado</p><p class="lb-star-text">${sanitizeContent(c.result)}</p></div>
+      ${c.learning ? `<div class="lb-star-section" style="background:#f9f9f9;border-radius:.75rem;padding:1rem 1.25rem;"><p class="lb-star-label">+ Aprendizaje Clave</p><p class="lb-star-text">${sanitizeContent(c.learning)}</p></div>` : ''}
     `;
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
