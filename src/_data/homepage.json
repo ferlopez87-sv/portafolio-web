@@ -88,15 +88,15 @@
   ],
   "header_nav": [
     {
-      "label": "About",
+      "label": "Acerca de mi",
       "url": "#about"
     },
     {
-      "label": "Work",
+      "label": "Portafolio",
       "url": "#work"
     },
     {
-      "label": "Contact",
+      "label": "Contáctame",
       "url": "#contact"
     }
   ],
