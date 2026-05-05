@@ -41,7 +41,9 @@ collections:
       - label: "Página de Inicio"
         name: "index"
         file: "src/index.njk"
+        format: "frontmatter"
         fields:
+          - { label: "Cuerpo HTML (No modificar)", name: "body", widget: "hidden" }
           - { label: "Título SEO", name: "title", widget: "string" }
           - { label: "Descripción SEO", name: "seo_description", widget: "text", required: false }
           - label: "Hero"
