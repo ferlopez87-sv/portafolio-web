@@ -6,11 +6,42 @@ media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
 collections:
-  - name: "pages"
-    label: "Pages"
-    folder: "src"
+  - name: "casos"
+    label: "Casos de Estudio"
+    folder: "src/casos"
     create: true
-    slug: "{{slug}}"
+    slug: "{{order}}-{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Título del Caso", name: "title", widget: "string", hint: "Ej: De $80K Tradicional a $500K de ROI Digital" }
+      - { label: "Empresa / Cliente", name: "company", widget: "string" }
+      - { label: "Período / Contexto", name: "period", widget: "string", hint: "Ej: 2018–2021 o E-Commerce & POD" }
+      - { label: "Etiqueta (Eyebrow)", name: "eyebrow", widget: "string", hint: "Ej: CASO 01" }
+      - { label: "Orden", name: "order", widget: "number", value_type: "int", hint: "Número de orden en el carousel (1, 2, 3...)" }
+      - label: "Tags / Disciplinas"
+        name: "tags"
+        widget: "list"
+        hint: "Ej: Growth Marketing, SEO, Brand Strategy"
+      - { label: "Resumen (para la tarjeta)", name: "summary", widget: "text", hint: "2–3 oraciones. Aparece en la tarjeta del carousel." }
+      - label: "Métricas Clave (hasta 4)"
+        name: "metrics"
+        widget: "list"
+        max: 4
+        fields:
+          - { label: "Valor", name: "value", widget: "string", hint: "Ej: $500K+" }
+          - { label: "Etiqueta", name: "label", widget: "string", hint: "Ej: ROI Comprobable" }
+      - { label: "S — Situación", name: "situation", widget: "text" }
+      - { label: "T — Tarea", name: "task", widget: "text" }
+      - { label: "A — Acción", name: "action", widget: "text" }
+      - { label: "R — Resultado", name: "result", widget: "text" }
+      - { label: "+ Aprendizaje Clave", name: "learning", widget: "text", required: false }
+
+  - name: "pages"
+    label: "Páginas"
+    folder: "src"
+    create: false
+    files:
+      - label: "Página de Inicio"
+        name: "index"
+        file: "src/index.njk"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
