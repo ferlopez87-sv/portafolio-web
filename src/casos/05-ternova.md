@@ -19,12 +19,14 @@ metrics:
     label: Cumplimiento SLA
   - value: "2"
     label: nuevos frameworks (Agile + Lean)
-situation: Grupo Ternova operaba sin un modelo claro de producción creativa
-  interna. Los equipos — Mercadeo, RRHH, Desarrollo Organizacional, Planta,
-  Seguridad — pedían materiales de comunicación de forma reactiva, sin
-  estructura de servicio ni procesos definidos, con dependencia fragmentada de
-  proveedores externos. El costo de esa fragmentación era invisible porque nadie
-  lo había medido.
+situation: Grupo Ternova buscaba lograr nuevos modelos de eficiencia a través de
+  un experimento de Shared Service Center, al integrar un equipo de Producción
+  Creativa se buscaba no solo organizar el modelo de operaciones, si no, también
+  lograr nuevos niveles de eficiencia operativa. Los equipos — Mercadeo, RRHH,
+  Desarrollo Organizacional, Planta, Seguridad — pedían materiales de
+  comunicación de forma reactiva, sin estructura de servicio ni procesos
+  definidos, con dependencia fragmentada de proveedores externos. El costo de
+  esa fragmentación era invisible porque nadie lo había medido.
 task: "Diseñar e implementar un modelo de servicios creativos internos que
   redujera la dependencia de proveedores externos, ordenara la demanda de 15+
   stakeholders y estableciera métricas de eficiencia operativa y financiera. La
