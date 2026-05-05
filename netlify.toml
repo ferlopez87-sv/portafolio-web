@@ -2,9 +2,6 @@
   command = "npm run build"
   publish = "_site"
 
-[[plugins]]
-  package = "@11ty/eleventy"
-
 [dev]
   command = "npm start"
   port = 8080
