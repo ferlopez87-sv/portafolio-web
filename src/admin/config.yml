@@ -37,8 +37,6 @@ collections:
 
   - name: "pages"
     label: "Páginas"
-    folder: "src"
-    create: false
     files:
       - label: "Página de Inicio"
         name: "index"
