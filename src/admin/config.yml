@@ -1,3 +1,4 @@
+local_backend: true
 backend:
   name: git-gateway
   branch: main
@@ -40,11 +41,24 @@ collections:
     files:
       - label: "Página de Inicio"
         name: "homepage"
-        file: "src/_data/homepage.yml"
-        format: "yml"
+        file: "src/_data/homepage.json"
+        format: "json"
         fields:
           - { label: "Título SEO", name: "title", widget: "string", hint: "Aparece en la pestaña del navegador." }
           - { label: "Descripción SEO", name: "seo_description", widget: "text", hint: "Aparece en los resultados de Google." }
+          - label: "Menú Superior (Header)"
+            name: "header_nav"
+            widget: "list"
+            fields:
+              - { label: "Etiqueta", name: "label", widget: "string" }
+              - { label: "URL / Ancla", name: "url", widget: "string", hint: "Ej: #work o /about/" }
+          - label: "Menú Flotante (Iconos)"
+            name: "floating_nav"
+            widget: "list"
+            fields:
+              - { label: "Etiqueta", name: "label", widget: "string" }
+              - { label: "URL / Ancla", name: "url", widget: "string" }
+              - { label: "Icono (Material Symbol)", name: "icon", widget: "string", hint: "Ej: home, grid_view, person, mail" }
           - label: "Hero — Sección Principal"
             name: "hero"
             widget: "object"
@@ -55,6 +69,15 @@ collections:
               - { label: "Título Línea 2 (color gris)", name: "title_line2", widget: "string", hint: "Ej: Sistemas de" }
               - { label: "Título Línea 3", name: "title_line3", widget: "string", hint: "Ej: Crecimiento." }
               - { label: "Descripción (subtítulo)", name: "description", widget: "text" }
+              - { label: "Imagen de Retrato", name: "image", widget: "image" }
+              - label: "Botones del Hero"
+                name: "buttons"
+                widget: "list"
+                max: 2
+                fields:
+                  - { label: "Texto del Botón", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Estilo Principal (Negro)", name: "primary", widget: "boolean", default: true }
           - label: "About — Grid de 4 columnas"
             name: "about"
             widget: "list"

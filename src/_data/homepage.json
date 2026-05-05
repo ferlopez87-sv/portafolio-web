@@ -1,0 +1,130 @@
+{
+  "contact": {
+    "badge": "Disponible para Nuevos Proyectos",
+    "title": "¿Construimos algo juntos?",
+    "email": "fernando@ferlopez.me",
+    "linkedin": "https://linkedin.com/in/ferlopez87"
+  },
+  "metrics": [
+    {
+      "value": "+35%",
+      "label": "de mejora en CAC "
+    },
+    {
+      "value": "+$500K",
+      "label": "ROI Comprobable"
+    },
+    {
+      "value": "3.5x→4.5x",
+      "label": "ROAS"
+    },
+    {
+      "value": "90%",
+      "label": "Cumplimiento de niveles de servicio"
+    }
+  ],
+  "stack": [
+    {
+      "tool": "Meta Ads"
+    },
+    {
+      "tool": "Google Ads"
+    },
+    {
+      "tool": "PowerBI"
+    },
+    {
+      "tool": "HubSpot CRM"
+    },
+    {
+      "tool": "MailerLite"
+    },
+    {
+      "tool": "Claude AI"
+    },
+    {
+      "tool": "Gemini + Nanobanana"
+    }
+  ],
+  "floating_nav": [
+    {
+      "label": "Home",
+      "url": "#",
+      "icon": "home"
+    },
+    {
+      "label": "Work",
+      "url": "#work",
+      "icon": "grid_view"
+    },
+    {
+      "label": "About",
+      "url": "#about",
+      "icon": "person"
+    },
+    {
+      "label": "Contact",
+      "url": "#contact",
+      "icon": "mail"
+    }
+  ],
+  "about": [
+    {
+      "title": "Background",
+      "description": "+10 años en marketing digital en la región de CA"
+    },
+    {
+      "title": "Expertise",
+      "description": "Growth Marketing, Performance Advertising & Creative Operations."
+    },
+    {
+      "title": "Skills",
+      "description": "Project Management, Change Management, Team Leadership, Storytelling, Creativity, Problem Solvieng and Brand Management."
+    },
+    {
+      "title": "Ubicación",
+      "description": "San Salvador, El Salvador"
+    }
+  ],
+  "header_nav": [
+    {
+      "label": "About",
+      "url": "#about"
+    },
+    {
+      "label": "Work",
+      "url": "#work"
+    },
+    {
+      "label": "Contact",
+      "url": "#contact"
+    }
+  ],
+  "philosophy": {
+    "eyebrow": "Filosofía de Trabajo",
+    "quote": "\"Operar rápidamente para comprobar las hipótesis. Los datos convierten la intuición en acciones estratégicas basadas en evidencia, que permiten la mejora contínua.\"",
+    "description": "No ejecuto tácticas ni administro presupuestos. Diseño motores de crecimiento que conectan objetivos comerciales con el viaje del cliente que se mantienen en el tiempo."
+  },
+  "title": "Fernando Lopez — Marketing Manager Portfolio",
+  "seo_description": "Fernando G. López Cañas — Growth Marketing, Strategic Communications & Creative Leadership. Portfolio 2026.",
+  "hero": {
+    "eyebrow": "MARKETING PORTFOLIO · 2026",
+    "title_line1": "Creador de",
+    "title_line2": "Sistemas de",
+    "title_line3": "Crecimiento.",
+    "description": "Growth Marketing · Strategic Communications · Creative Leadership. Desde San Salvador para el mundo 🚀.",
+    "image": "/assets/images/photo2.jpg",
+    "buttons": [
+      {
+        "label": "Ver Casos de Estudio",
+        "url": "#work",
+        "primary": true
+      },
+      {
+        "label": "Contactar",
+        "url": "mailto:fernando@ferlopez.me",
+        "primary": false
+      }
+    ]
+  }
+}

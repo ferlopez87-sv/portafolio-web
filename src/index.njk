@@ -21,13 +21,46 @@ tailwind.config = {
   body{font-family:'Inter',sans-serif;background-color:#f9f9f9;color:#1b1b1b;}
   .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;}
 
+  /* ── REVEAL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   /* ── CAROUSEL ── */
-  .carousel-track{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:1rem;cursor:grab;}
+  .carousel-track{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2rem 1rem;margin:-2rem -1rem;cursor:grab;}
   .carousel-track::-webkit-scrollbar{display:none;}
   .carousel-track.dragging{cursor:grabbing;user-select:none;}
-  .case-card{flex:0 0 340px;scroll-snap-align:start;border-radius:1.25rem;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;min-height:420px;transition:transform .2s,box-shadow .2s;}
-  .case-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.12);}
+  .case-card{flex:0 0 340px;scroll-snap-align:start;border-radius:1.25rem;padding:2rem;display:flex;flex-direction:column;justify-content:space-between;min-height:420px;transition:all .4s cubic-bezier(0.2, 0.8, 0.2, 1);will-change: transform, box-shadow;}
+  .case-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 24px 48px rgba(0,0,0,.08);}
   @media(max-width:640px){.case-card{flex:0 0 85vw;}}
+
+  /* ── HERO IMAGE ── */
+  .hero-img-container {
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .hero-img-container img {
+    filter: grayscale(1);
+    transition: filter 0.6s ease;
+  }
+  .hero-img-container:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 50px 100px -20px rgba(0,0,0,0.2);
+  }
+  .hero-img-container:hover img {
+    filter: grayscale(0);
+  }
+
+  /* ── BUTTONS ── */
+  button, a { transition: all 0.3s ease; }
+  button:active, a:active { transform: scale(0.96); }
 
   /* ── LIGHTBOX ── */
   #lb-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
@@ -51,17 +84,18 @@ tailwind.config = {
 <div class="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between">
   <p class="text-sm font-semibold tracking-tight">Fernando Lopez — Marketing Portfolio</p>
   <div class="flex gap-6">
-    <a class="text-xs font-medium uppercase tracking-widest hover:opacity-60 transition-opacity" href="#work">Work</a>
-    <a class="text-xs font-medium uppercase tracking-widest hover:opacity-60 transition-opacity" href="#about">About</a>
-    <a class="text-xs font-medium uppercase tracking-widest hover:opacity-60 transition-opacity" href="#contact">Contact</a>
+    {% for link in homepage.header_nav %}
+    <a class="text-xs font-medium uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ link.url }}">{{ link.label }}</a>
+    {% endfor %}
   </div>
 </div>
 </header>
 
+
 <main class="max-w-[1100px] mx-auto px-6 pt-32 space-y-[120px]">
 
   <!-- Hero -->
-  <section class="flex flex-col md:flex-row gap-12 items-center">
+  <section class="flex flex-col md:flex-row gap-12 items-center reveal">
     <div class="flex-1 space-y-8">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{{ homepage.hero.eyebrow }}</p>
       <h1 class="text-[56px] md:text-[64px] font-bold leading-[1.1] tracking-[-0.02em]">
@@ -69,24 +103,27 @@ tailwind.config = {
       </h1>
       <p class="text-secondary text-lg max-w-lg">{{ homepage.hero.description }}</p>
       <div class="flex gap-4 flex-wrap">
-        <a href="#work" class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:opacity-80 transition-opacity">Ver Casos de Estudio</a>
-        <a href="mailto:{{ homepage.contact.email }}" class="bg-surface-container text-on-surface px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:bg-surface-container-high transition-colors">Contactar</a>
+        {% for btn in homepage.hero.buttons %}
+        <a href="{{ btn.url }}" class="{% if btn.primary %}bg-primary text-on-primary{% else %}bg-surface-container text-on-surface{% endif %} px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:opacity-80 transition-opacity">
+          {{ btn.label }}
+        </a>
+        {% endfor %}
       </div>
     </div>
-    <div class="w-full md:w-[380px] aspect-[4/5] overflow-hidden rounded-lg bg-surface-container">
-      <img alt="Fernando G. López Cañas" class="w-full h-full object-cover grayscale" src="/assets/images/hero-portrait.jpg">
+    <div class="w-full md:w-[380px] aspect-[4/5] overflow-hidden rounded-lg hero-img-container bg-surface-container">
+      <img alt="Fernando G. López Cañas" class="w-full h-full object-cover" src="{{ homepage.hero.image }}">
     </div>
   </section>
 
   <!-- About -->
-  <section class="grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-outline-variant pt-12" id="about">
+  <section class="grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-outline-variant pt-12 reveal" id="about">
     {% for item in homepage.about %}
     <div><p class="text-xs text-secondary mb-2 uppercase font-bold tracking-widest">{{ item.title }}</p><p class="font-medium">{{ item.description }}</p></div>
     {% endfor %}
   </section>
 
   <!-- Metrics -->
-  <section class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  <section class="grid grid-cols-2 md:grid-cols-3 gap-4 reveal">
     {% for m in homepage.metrics %}
     <div class="bg-primary-container text-on-primary p-8 md:p-10 rounded-lg flex flex-col justify-center items-center text-center">
       <h3 class="text-3xl md:text-5xl font-bold mb-2">{{ m.value }}</h3>
@@ -96,7 +133,7 @@ tailwind.config = {
   </section>
 
   <!-- Cases Carousel -->
-  <section class="space-y-8" id="work">
+  <section class="space-y-8 reveal" id="work">
     <div class="flex items-end justify-between">
       <div>
         <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-1">STAR+ Method</p>
@@ -174,7 +211,7 @@ tailwind.config = {
   </section>
 
   <!-- Stack -->
-  <section class="space-y-6">
+  <section class="space-y-6 reveal">
     <h2 class="text-3xl font-bold tracking-tight">Stack & Metodología</h2>
     <div class="flex flex-wrap gap-3">
       {% for s in homepage.stack %}
@@ -184,7 +221,7 @@ tailwind.config = {
   </section>
 
   <!-- Philosophy -->
-  <section class="py-20 border-y border-outline-variant">
+  <section class="py-20 border-y border-outline-variant reveal">
     <div class="max-w-3xl">
       <p class="text-xs text-secondary mb-6 uppercase tracking-[0.2em] font-bold">{{ homepage.philosophy.eyebrow }}</p>
       <h2 class="text-4xl font-semibold leading-tight">{{ homepage.philosophy.quote }}</h2>
@@ -193,7 +230,7 @@ tailwind.config = {
   </section>
 
   <!-- Contact -->
-  <section class="pb-32 text-center" id="contact">
+  <section class="pb-32 text-center reveal" id="contact">
     <div class="inline-flex items-center gap-2 mb-8 bg-green-100 text-green-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
       <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
       {{ homepage.contact.badge }}
@@ -210,10 +247,11 @@ tailwind.config = {
 <!-- Floating Nav -->
 <nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
   <div class="bg-black/90 backdrop-blur-xl px-6 py-3 rounded-full flex items-center gap-8 shadow-2xl border border-white/10">
-    <a class="text-white hover:text-gray-300 transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">home</span></a>
-    <a class="text-white hover:text-gray-300 transition-colors" href="#work"><span class="material-symbols-outlined text-[20px]">grid_view</span></a>
-    <a class="text-white hover:text-gray-300 transition-colors" href="#about"><span class="material-symbols-outlined text-[20px]">person</span></a>
-    <a class="text-white hover:text-gray-300 transition-colors" href="#contact"><span class="material-symbols-outlined text-[20px]">mail</span></a>
+    {% for link in homepage.floating_nav %}
+    <a class="text-white hover:text-gray-300 transition-colors" href="{{ link.url }}" aria-label="{{ link.label }}">
+      <span class="material-symbols-outlined text-[20px]">{{ link.icon }}</span>
+    </a>
+    {% endfor %}
   </div>
 </nav>
 
@@ -349,6 +387,18 @@ tailwind.config = {
   track.addEventListener('mouseleave', () => { isDown=false; track.classList.remove('dragging'); });
   track.addEventListener('mouseup', () => { isDown=false; track.classList.remove('dragging'); });
   track.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(); const x=e.pageX-track.offsetLeft; track.scrollLeft=scrollLeft-(x-startX)*1.5; });
+
+  // ── Reveal Animation (Intersection Observer) ──
+  const revealCallback = (entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        obs.unobserve(entry.target);
+      }
+    });
+  };
+  const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   // Netlify Identity
   if (window.netlifyIdentity) {
