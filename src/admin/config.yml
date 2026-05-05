@@ -42,4 +42,45 @@ collections:
         name: "index"
         file: "src/index.njk"
         fields:
-          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Título SEO", name: "title", widget: "string" }
+          - { label: "Descripción SEO", name: "seo_description", widget: "text", required: false }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Título Línea 1", name: "title_line1", widget: "string" }
+              - { label: "Título Línea 2 (Acento)", name: "title_line2", widget: "string" }
+              - { label: "Título Línea 3", name: "title_line3", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "text" }
+          - label: "About (Grid de 4)"
+            name: "about"
+            widget: "list"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "string" }
+          - label: "Métricas Principales"
+            name: "metrics"
+            widget: "list"
+            fields:
+              - { label: "Valor", name: "value", widget: "string" }
+              - { label: "Etiqueta", name: "label", widget: "string" }
+          - label: "Stack & Metodología"
+            name: "stack"
+            widget: "list"
+            field: { label: "Herramienta", name: "tool", widget: "string" }
+          - label: "Filosofía"
+            name: "philosophy"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Cita Principal", name: "quote", widget: "text" }
+              - { label: "Descripción Secundaria", name: "description", widget: "text" }
+          - label: "Contacto"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Badge Disponibilidad", name: "badge", widget: "string" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Link LinkedIn", name: "linkedin", widget: "string" }
