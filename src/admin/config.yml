@@ -39,50 +39,57 @@ collections:
     label: "Páginas"
     files:
       - label: "Página de Inicio"
-        name: "index"
-        file: "src/index.njk"
-        format: "frontmatter"
+        name: "homepage"
+        file: "src/_data/homepage.yml"
+        format: "yml"
         fields:
-          - { label: "Cuerpo HTML (No modificar)", name: "body", widget: "hidden" }
-          - { label: "Título SEO", name: "title", widget: "string" }
-          - { label: "Descripción SEO", name: "seo_description", widget: "text", required: false }
-          - label: "Hero"
+          - { label: "Título SEO", name: "title", widget: "string", hint: "Aparece en la pestaña del navegador." }
+          - { label: "Descripción SEO", name: "seo_description", widget: "text", hint: "Aparece en los resultados de Google." }
+          - label: "Hero — Sección Principal"
             name: "hero"
             widget: "object"
+            hint: "El bloque grande de texto al entrar al sitio."
             fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Título Línea 1", name: "title_line1", widget: "string" }
-              - { label: "Título Línea 2 (Acento)", name: "title_line2", widget: "string" }
-              - { label: "Título Línea 3", name: "title_line3", widget: "string" }
-              - { label: "Descripción", name: "description", widget: "text" }
-          - label: "About (Grid de 4)"
+              - { label: "Eyebrow (texto pequeño arriba)", name: "eyebrow", widget: "string", hint: "Ej: MARKETING PORTFOLIO · 2026" }
+              - { label: "Título Línea 1", name: "title_line1", widget: "string", hint: "Ej: Arquitecto de" }
+              - { label: "Título Línea 2 (color gris)", name: "title_line2", widget: "string", hint: "Ej: Sistemas de" }
+              - { label: "Título Línea 3", name: "title_line3", widget: "string", hint: "Ej: Crecimiento." }
+              - { label: "Descripción (subtítulo)", name: "description", widget: "text" }
+          - label: "About — Grid de 4 columnas"
             name: "about"
             widget: "list"
+            hint: "Las 4 tarjetas de información debajo del hero (Background, Expertise, Stack, Ubicación)."
             fields:
-              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Título de la columna", name: "title", widget: "string" }
               - { label: "Descripción", name: "description", widget: "string" }
           - label: "Métricas Principales"
             name: "metrics"
             widget: "list"
+            hint: "Los 6 recuadros negros con números grandes."
             fields:
-              - { label: "Valor", name: "value", widget: "string" }
-              - { label: "Etiqueta", name: "label", widget: "string" }
+              - { label: "Valor (número grande)", name: "value", widget: "string", hint: "Ej: $500K+" }
+              - { label: "Etiqueta (texto pequeño)", name: "label", widget: "string", hint: "Ej: ROI Comprobable" }
           - label: "Stack & Metodología"
             name: "stack"
             widget: "list"
-            field: { label: "Herramienta", name: "tool", widget: "string" }
-          - label: "Filosofía"
+            hint: "Las píldoras/chips de herramientas (Meta Ads, GA4, etc.)."
+            fields:
+              - { label: "Herramienta", name: "tool", widget: "string" }
+          - label: "Filosofía — Sección de cita"
             name: "philosophy"
             widget: "object"
+            hint: "La sección con la cita grande entre las dos líneas horizontales."
             fields:
-              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
-              - { label: "Cita Principal", name: "quote", widget: "text" }
-              - { label: "Descripción Secundaria", name: "description", widget: "text" }
-          - label: "Contacto"
+              - { label: "Eyebrow", name: "eyebrow", widget: "string", hint: "Ej: Filosofía de Trabajo" }
+              - { label: "Cita Principal", name: "quote", widget: "text", hint: "El texto grande entre comillas." }
+              - { label: "Descripción secundaria", name: "description", widget: "text" }
+          - label: "Contacto — Sección final"
             name: "contact"
             widget: "object"
+            hint: "La sección de contacto al final de la página."
             fields:
-              - { label: "Badge Disponibilidad", name: "badge", widget: "string" }
-              - { label: "Título", name: "title", widget: "string" }
-              - { label: "Email", name: "email", widget: "string" }
-              - { label: "Link LinkedIn", name: "linkedin", widget: "string" }
+              - { label: "Badge de disponibilidad", name: "badge", widget: "string", hint: "Ej: Disponible para Nuevos Proyectos" }
+              - { label: "Título principal", name: "title", widget: "string", hint: "Ej: ¿Construimos algo juntos?" }
+              - { label: "Correo electrónico", name: "email", widget: "string" }
+              - { label: "URL de LinkedIn", name: "linkedin", widget: "string" }
+

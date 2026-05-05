@@ -1,66 +1,13 @@
 ---
 layout: null
-title: Fernando Lopez — Marketing Manager Portfolio
-seo_description: "Fernando G. López Cañas — Growth Marketing, Strategic Communications & Creative Leadership. Portfolio 2026."
-hero:
-  eyebrow: "MARKETING PORTFOLIO · 2026"
-  title_line1: "Arquitecto de"
-  title_line2: "Sistemas de"
-  title_line3: "Crecimiento."
-  description: "Growth Marketing · Strategic Communications · Creative Leadership. Desde San Salvador para el mundo."
-about:
-  - title: "Background"
-    description: "+10 años en marketing digital entre mercados de LATAM y EE.UU."
-  - title: "Expertise"
-    description: "Growth Marketing, Performance Advertising & Creative Operations."
-  - title: "Stack"
-    description: "Meta Ads, Google Ads, GA4, PowerBI, Claude, HubSpot, MailerLite."
-  - title: "Ubicación"
-    description: "San Salvador, El Salvador · Bilingüe ES/EN · Disponible remotamente."
-metrics:
-  - value: "13,000"
-    label: "Leads Calificados"
-  - value: "$9"
-    label: "CAC Digital"
-  - value: "$500K+"
-    label: "ROI Comprobable"
-  - value: "6:1"
-    label: "Ratio LTV:CAC"
-  - value: "3.5x→4.5x"
-    label: "ROAS"
-  - value: "90%"
-    label: "On-Time SLA"
-stack:
-  - tool: "Meta Ads"
-  - tool: "Google Ads"
-  - tool: "GA4"
-  - tool: "Looker Studio"
-  - tool: "PowerBI"
-  - tool: "HubSpot CRM"
-  - tool: "Zoho CRM"
-  - tool: "MailerLite"
-  - tool: "Claude AI"
-  - tool: "Gemini"
-  - tool: "ChatGPT"
-  - tool: "Eventbrite"
-  - tool: "Zoom Webinars"
-philosophy:
-  eyebrow: "Filosofía de Trabajo"
-  quote: '"Cada output es una hipótesis. Los datos convierten conversaciones subjetivas en recomendaciones estratégicas basadas en evidencia."'
-  description: "No ejecuto tácticas ni administro presupuestos. Diseño motores de crecimiento que conectan objetivos comerciales con el viaje del cliente — y que siguen funcionando mucho después de haber sido implementados."
-contact:
-  badge: "Disponible para Nuevos Proyectos"
-  title: "¿Construimos algo juntos?"
-  email: "f.lopez.ideas@gmail.com"
-  linkedin: "https://linkedin.com/in/ferlopez87"
 ---
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="es">
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<meta name="description" content="{{ seo_description }}">
-<title>{{ title }}</title>
+<meta name="description" content="{{ homepage.seo_description }}">
+<title>{{ homepage.title }}</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -116,14 +63,14 @@ tailwind.config = {
   <!-- Hero -->
   <section class="flex flex-col md:flex-row gap-12 items-center">
     <div class="flex-1 space-y-8">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{{ hero.eyebrow }}</p>
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">{{ homepage.hero.eyebrow }}</p>
       <h1 class="text-[56px] md:text-[64px] font-bold leading-[1.1] tracking-[-0.02em]">
-        {{ hero.title_line1 }}<br><span class="text-secondary">{{ hero.title_line2 }}</span><br>{{ hero.title_line3 }}
+        {{ homepage.hero.title_line1 }}<br><span class="text-secondary">{{ homepage.hero.title_line2 }}</span><br>{{ homepage.hero.title_line3 }}
       </h1>
-      <p class="text-secondary text-lg max-w-lg">{{ hero.description }}</p>
+      <p class="text-secondary text-lg max-w-lg">{{ homepage.hero.description }}</p>
       <div class="flex gap-4 flex-wrap">
         <a href="#work" class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:opacity-80 transition-opacity">Ver Casos de Estudio</a>
-        <a href="mailto:{{ contact.email }}" class="bg-surface-container text-on-surface px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:bg-surface-container-high transition-colors">Contactar</a>
+        <a href="mailto:{{ homepage.contact.email }}" class="bg-surface-container text-on-surface px-8 py-4 rounded-full font-bold text-sm tracking-[0.015em] hover:bg-surface-container-high transition-colors">Contactar</a>
       </div>
     </div>
     <div class="w-full md:w-[380px] aspect-[4/5] overflow-hidden rounded-lg bg-surface-container">
@@ -133,14 +80,14 @@ tailwind.config = {
 
   <!-- About -->
   <section class="grid grid-cols-1 md:grid-cols-4 gap-8 border-t border-outline-variant pt-12" id="about">
-    {% for item in about %}
+    {% for item in homepage.about %}
     <div><p class="text-xs text-secondary mb-2 uppercase font-bold tracking-widest">{{ item.title }}</p><p class="font-medium">{{ item.description }}</p></div>
     {% endfor %}
   </section>
 
   <!-- Metrics -->
   <section class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    {% for m in metrics %}
+    {% for m in homepage.metrics %}
     <div class="bg-primary-container text-on-primary p-8 md:p-10 rounded-lg flex flex-col justify-center items-center text-center">
       <h3 class="text-3xl md:text-5xl font-bold mb-2">{{ m.value }}</h3>
       <p class="text-xs font-medium uppercase tracking-widest text-on-primary-container">{{ m.label }}</p>
@@ -230,7 +177,7 @@ tailwind.config = {
   <section class="space-y-6">
     <h2 class="text-3xl font-bold tracking-tight">Stack & Metodología</h2>
     <div class="flex flex-wrap gap-3">
-      {% for s in stack %}
+      {% for s in homepage.stack %}
       <span class="px-5 py-2.5 bg-surface-container rounded-full text-sm font-medium">{{ s.tool }}</span>
       {% endfor %}
     </div>
@@ -239,9 +186,9 @@ tailwind.config = {
   <!-- Philosophy -->
   <section class="py-20 border-y border-outline-variant">
     <div class="max-w-3xl">
-      <p class="text-xs text-secondary mb-6 uppercase tracking-[0.2em] font-bold">{{ philosophy.eyebrow }}</p>
-      <h2 class="text-4xl font-semibold leading-tight">{{ philosophy.quote }}</h2>
-      <p class="mt-8 text-secondary text-base leading-relaxed">{{ philosophy.description }}</p>
+      <p class="text-xs text-secondary mb-6 uppercase tracking-[0.2em] font-bold">{{ homepage.philosophy.eyebrow }}</p>
+      <h2 class="text-4xl font-semibold leading-tight">{{ homepage.philosophy.quote }}</h2>
+      <p class="mt-8 text-secondary text-base leading-relaxed">{{ homepage.philosophy.description }}</p>
     </div>
   </section>
 
@@ -249,12 +196,12 @@ tailwind.config = {
   <section class="pb-32 text-center" id="contact">
     <div class="inline-flex items-center gap-2 mb-8 bg-green-100 text-green-800 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
       <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
-      {{ contact.badge }}
+      {{ homepage.contact.badge }}
     </div>
-    <h2 class="text-5xl md:text-6xl font-bold mb-12 tracking-tight">{{ contact.title }}</h2>
+    <h2 class="text-5xl md:text-6xl font-bold mb-12 tracking-tight">{{ homepage.contact.title }}</h2>
     <div class="flex flex-col md:flex-row justify-center gap-8 items-center">
-      <a class="text-2xl font-medium border-b-2 border-primary pb-1 hover:opacity-60 transition-opacity" href="mailto:{{ contact.email }}">{{ contact.email }}</a>
-      <a class="text-sm font-bold uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="text-2xl font-medium border-b-2 border-primary pb-1 hover:opacity-60 transition-opacity" href="mailto:{{ homepage.contact.email }}">{{ homepage.contact.email }}</a>
+      <a class="text-sm font-bold uppercase tracking-widest hover:opacity-60 transition-opacity" href="{{ homepage.contact.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </section>
 
