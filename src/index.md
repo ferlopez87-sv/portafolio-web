@@ -8,3 +8,5 @@ title: Fernando Lopez | Estratega Digital
 Soy un estratega digital especializado en crear experiencias que conectan marcas con personas. Este es mi espacio personal donde comparto mis proyectos y reflexiones.
 
 Esta plataforma está impulsada por **Eleventy** para una velocidad extrema y **Decap CMS** para una gestión de contenidos fluida.
+
+<!-- Despliegue actualizado para refrescar Identity -->
