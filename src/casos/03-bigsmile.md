@@ -18,9 +18,36 @@ metrics:
     label: "Páginas con Arquitectura SEO"
   - value: "~1,936"
     label: "Visitas Potenciales/Mes"
-situation: "La Clínica Big Smile, liderada por la Dra. Claudia Girón (odontopediatra con 25 años de experiencia, formación internacional en México y Texas, reconocida por Colgate Palmolive), operaba con un sitio web que no reflejaba ni su autoridad académica ni su posicionamiento emocional. El análisis reveló que prácticamente ningún odontopediatra en El Salvador ejecutaba marketing digital intencional, dejando 12,910 búsquedas mensuales sin capturar."
-task: "Convertir el sitio web de un activo inservible en el principal canal de adquisición de pacientes nuevos, estimando un flujo de 30 visitas mensuales provenientes de SEO orgánico, con una tasa de conversión del 10% y un ticket promedio de $45 por consulta. El reto adicional era comunicar simultáneamente autoridad médica máxima (para pediatras que derivan casos) y calidez (para madres primerizas)."
-action: "1. Research: análisis de palabras clave reveló el vacío competitivo (odontopediatra: 5,000/mes, dentista infantil: 5,000/mes, miedo dentista niños: 520/mes). 2. Reposicionamiento estratégico: se descartaron los servicios de emergencia como diferenciador y se identificó el diferenciador real — autoridad académica única + continuidad del cuidado desde el embarazo. 3. Sistema de narrativa dual: lenguaje técnico-empático para madres y lenguaje aventurero-mágico para niños, capitalizando la identidad preexistente de 'la clínica de los delfines'. 4. Sitemap SEO de 7 páginas y 15 subsecciones con FAQ Schema JSON-LD para Featured Snippets. 5. Estrategia de conversión multicanal con CTAs directos a WhatsApp y protocolo de respuesta en menos de 2 horas."
-result: "Business Case proyectado: escenario conservador (fase inicial) — 30 visitas SEO/mes con conversión del 10% = 3 nuevas citas/mes ($1,620/año). Escenario escala (12 meses) — 90 visitas/mes = 9 citas/mes ($4,860/año). Potencial de mercado total: ~1,936 visitas mensuales potenciales con CTR conservador del 15% en posición top 3. Vacío competitivo confirmado: 0 competidores locales con contenido SEO optimizado."
-learning: "La decisión estratégica más importante fue qué NO comunicar. El riesgo percibido era que la narrativa marina infantil trivializara las credenciales médicas — la suposición de que si el framework se diseñaba con mensajes duales, ambas dimensiones se reforzarían mutuamente en lugar de competir fue validada directamente con la Dra. Claudia."
+situation: "La Clínica Big Smile, liderada por la Dra. Claudia Girón (odontopediatra
+  con 25 años de experiencia, formación internacional en México y Texas,
+  reconocida por Colgate Palmolive como líder de opinión), tenía un problema
+  típico: su sitio web no reflejaba quién era. El copy hablaba de 'consultorios'
+  y 'pacientes' sin diferenciarse de ningún dentista general. Y prácticamente
+  ningún odontopediatra en El Salvador ejecutaba marketing digital, dejando
+  12,910 búsquedas mensuales sin capturar."
+task: "Convertir el sitio web en el principal canal de adquisición de pacientes
+  nuevos: 30 visitas mensuales desde SEO orgánico, tasa de conversión del 10%,
+  ticket promedio de $45. El reto adicional era comunicar simultáneamente
+  autoridad médica (para pediatras que derivan casos) y calidez (para madres
+  primerizas que deciden por confianza)."
+action: "1. Research: análisis de palabras clave confirmó el vacío competitivo
+  (odontopediatra: 5,000/mes, dentista infantil: 5,000/mes, miedo dentista
+  niños: 520/mes). 2. Reposicionamiento: se descartaron las emergencias dentales
+  como diferenciador y se identificó el real — autoridad académica única más
+  continuidad del cuidado desde el embarazo. 3. Narrativa dual: lenguaje
+  técnico-empático para madres y lenguaje aventurero para niños, capitalizando
+  la identidad preexistente de 'la clínica de los delfines'. 4. Sitemap SEO de 7
+  páginas y 15 subsecciones con FAQ Schema JSON-LD para Featured Snippets. 5.
+  Conversión: CTAs directos a WhatsApp y protocolo de respuesta en menos de 2h."
+result: "Escenario conservador: 30 visitas SEO/mes con 10% de conversión = 3 nuevas
+  citas/mes ($1,620/año). Escenario escala a 12 meses: 90 visitas/mes = 9 citas
+  ($4,860/año). Potencial total mapeado: ~1,936 visitas mensuales con CTR del 15%
+  en posición top 3. Vacío confirmado: 0 competidores locales con contenido SEO
+  optimizado para este mercado."
+learning: "La decisión estratégica más importante fue qué no comunicar. El riesgo
+  era que la narrativa marina infantil trivializara las credenciales médicas. La
+  hipótesis — que un framework de mensajes duales haría que autoridad y calidez
+  se reforzaran mutuamente — fue validada directamente con la Dra. Claudia, quien
+  confirmó que 'la clínica de los delfines' ya era una identidad querida por sus
+  pacientes."
 ---
