@@ -6,6 +6,7 @@
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",
+    "build:static": "eleventy && rm -rf dist-static && mkdir -p dist-static && cp -R _site/* dist-static/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
