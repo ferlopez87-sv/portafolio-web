@@ -116,3 +116,15 @@ collections:
               - { label: "Correo electrónico", name: "email", widget: "string" }
               - { label: "URL de LinkedIn", name: "linkedin", widget: "string" }
 
+      - label: "Configuración del Sitio"
+        name: "settings"
+        file: "src/_data/settings.json"
+        format: "json"
+        fields:
+          - label: "Google Analytics"
+            name: "google_analytics"
+            widget: "object"
+            hint: "Configuración del tracking de Google Analytics."
+            fields:
+              - { label: "Activar Google Analytics", name: "enabled", widget: "boolean", default: true, hint: "Activa o desactiva el script de tracking en todo el sitio." }
+              - { label: "Measurement ID", name: "measurement_id", widget: "string", hint: "El ID de medición de GA4. Formato: G-XXXXXXXXXX. Lo encuentras en Google Analytics > Admin > Data Streams.", pattern: ["^G-[A-Z0-9]{6,12}$", "El formato debe ser G- seguido de 6 a 12 caracteres alfanuméricos (ej: G-5YTRMTDDSZ)."] }

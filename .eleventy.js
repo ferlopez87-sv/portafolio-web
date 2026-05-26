@@ -28,6 +28,12 @@ module.exports = function(eleventyConfig) {
     return "#";
   });
 
+  // Google Analytics Measurement ID validator.
+  // Only allows the strict GA4 format G- followed by alphanumeric chars.
+  eleventyConfig.addFilter("is_valid_ga_id", function(value) {
+    return /^G-[A-Z0-9]{6,12}$/.test(String(value ?? ""));
+  });
+
   return {
     dir: {
       input: "src",
